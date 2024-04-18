@@ -110,6 +110,10 @@ function chiffrageMot(mot) {
     }
   });
 
+  button.addEventListener("click", (event) => {
+    const destination = document.querySelector('#motcode');
+    destination.innerHTML = chiffrage();
+  });
 
 
 
