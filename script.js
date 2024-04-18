@@ -1,4 +1,5 @@
-
+/* Version for Each 
+bug : pas de possibilité d'encoder une seconde fois 
 function chiffrage(mot) {
     const alphabet ="abcdefghijklmnopqrstuvwxyz" 
     let motChiffre = "" //variable vide qui permettra de stocker le mot une fois chifré 
@@ -29,6 +30,60 @@ function chiffrage(mot) {
     let inputValue = document.querySelector('#myInput').value;
     //setTimeout(function() { inputValue = ''; }, 5000);
     chiffrage(inputValue);
-    console.log("c'est bon")
   });
+  
+  */
+
+
+
+function chiffrageMot(mot) {
+  //role : Encoder un mot
+  //parametre : le mot à encoder 
+
+      const alphabet = "abcdefghijklmnopqrstuvwxyz";
+      let motChiffre = ""; //variable vide qui permettra de stocker le mot une fois chiffré
+
+    for (i=0; i<mot.length; i++) {
+
+        if (mot[i]== " ") {
+              motChiffre+=" ";
+        } 
+         else {
+              let pos = alphabet.indexOf(mot[i]);
+              let posLettreSuivante = pos + 1;
+
+              if (posLettreSuivante === alphabet.length) {
+                // on revient a A
+                posLettreSuivante = 0;
+              }
+              
+              motChiffre += alphabet[posLettreSuivante].toLocaleUpperCase();
+              //console.log(motChiffre)
+        }
+        
+    }
+    document.querySelector("#box").innerHTML += 
+`<p class="blue"><span>${motChiffre}</span> </p> `
+    return motChiffre;  
+    
+}
+
+
+
+  const button = document.querySelector('#myButton');
+  
+  button.addEventListener('click', function(event) {
+    console.log(event);
+    // Récupérer le contenu de l'input
+    let inputValue = document.querySelector('#myInput').value;
+    
+    chiffrageMot(inputValue);
+
+  });
+  
+
+
+
+
+
   
