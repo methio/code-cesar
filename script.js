@@ -35,7 +35,7 @@ function chiffrage(mot) {
   */
 
 
-
+/*
 function chiffrageMot(mot) {
   //role : Encoder un mot
   //parametre : le mot à encoder 
@@ -81,7 +81,34 @@ function chiffrageMot(mot) {
 
   });
   
+  */
 
+  const chiffrage = () => {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let mcode = "";
+
+    let message = document.querySelector('#myInput').value;   // get value
+    message = message.toLowerCase();                          // value to lowercase
+    message = [...message].filter( (char) => char != " ");    // remove spaces + create array from string
+
+    message.forEach((char, index) => {                         
+        const pos = alphabet.indexOf(char);
+        const nextPos = pos+1 < alphabet.length ? pos+1 : 0;  // ternaire
+        mcode += alphabet[nextPos].toUpperCase();
+    });
+    return mcode
+  }
+
+  const button = document.querySelector('#myButton');
+  
+  document.addEventListener("keypress", function(event) {    
+    if (event.key === "Enter") {
+
+      console.log(chiffrage())
+      const destination = document.querySelector('#motcode');
+      destination.innerHTML = chiffrage();
+    }
+  });
 
 
 
